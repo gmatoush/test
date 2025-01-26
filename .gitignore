@@ -1,0 +1,12 @@
+.bloop/
+.metals/
+.vscode/
+project
+target
+.scala-build
+.bsp
+a.txt
+b.txt
+t.txt
+game_area_output.txt
+./src/main/scala/simulation_components/Main.scala
