@@ -20,27 +20,32 @@ object Board {
 
   // Array storing the normal spaces on the board
   val normalSpaces = Array.fill(67)(new Space())
-  val "\n" = "\n"
 
   def show: String = {
-    val sb = new StringBuilder("\n|\n|\nV\n")
+    val sb = new StringBuilder("|\n|\nV\n") // Start the board output
 
-    sb ++= exits(0).show + "\n"
-    sb ++= exits(1).show + "\n"
-    sb ++= exits(2).show + "\n"
-    sb ++= exits(3).show + "\n"
-    sb ++= new Safe().show + "\n"
+    // Loop through exits and corresponding homes
     for (i <- exits.indices) {
+      // Add the exit
       sb ++= exits(i).show + "\n"
-      for (_ <- 0 until 6) sb ++= new Space().show + "\n"
-      sb ++= new Safe().show + "\n"
-      for (_ <- 0 until 4) sb ++= new Space().show + "\n"
-      sb ++= homes(3).show + "\n"
-      for (_ <- 0 until 4) sb ++= new Space().show + "\n"
 
+      // Add 6 empty spaces
+      sb ++= (1 to 6).map(_ => "{}").mkString("\n") + "\n"
+
+      // Add a safe space
+      sb ++= "{}SAFE\n"
+
+      // Add 4 more spaces
+      sb ++= (1 to 4).map(_ => "{}").mkString("\n") + "\n"
+
+      // Add the corresponding home
+      sb ++= homes(i).show + "\n"
+
+      // Add 4 more spaces
+      sb ++= (1 to 4).map(_ => "{}").mkString("\n") + "\n"
     }
 
-    sb ++= "|\n|\nV\n" // Final formatting
+    sb ++= "|\n|\nV\n\n"
     sb.toString
   }
 }
