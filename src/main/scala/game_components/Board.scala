@@ -4,6 +4,7 @@ import scala.collection.mutable
 
 //******* BOARD *******
 object Board {
+  
   // Variables storing the exits
   val redExit = new Exit("RED")
   val blueExit = new Exit("BLUE")
